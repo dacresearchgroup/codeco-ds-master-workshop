@@ -123,21 +123,23 @@ delete-controllers
 If you want to test in a fast way the controllers try running the following for the ACM Controller. Just fill in one of your node names in the `<node-name>` field.
 ```
 kubectl get acm-mons <node-name>-object -o=jsonpath='{.spec.node_name}:{.spec.cpu}:{.spec.mem}:{.spec.node_failure}:{.spec.node_energy}:{.spec.node_sec} -n he-codeco-acm'
+# kubectl get acm-mons sonem-worker-object -o=jsonpath='{.spec.node_name}:{.spec.cpu}:{.spec.mem}:{.spec.node_failure}:{.spec.node_energy}:{.spec.node_sec} -n he-codeco-acm
 ```
 You can test MDM and NetMA controllers as well with the following commands:
 ```
-kubectl get mdm-mons <node-name>-object -o=jsonpath='{.spec.node_name}:{.spec.freshness}:{.spec.compliance}:{.spec.portability} -n he-codeco-mdm'
-kubectl get netma-mons <node-name>-object -o=jsonpath='{.spec.node_name}:{.spec.link_id}:{.spec.link_failure}:{.spec.node_net_failure}:{.spec.ebw}:{.spec.ibw}:{.spec.latency}:{.spec.uid_visits}:{.spec.uid_location}:{.spec.zone}:{.spec.node_degree}:{.spec.path_length}:{.spec.link_energy}:{.spec.node_net_energy} -n he-codeco-netma'
+kubectl get mdm-mons <node-name>-object -o=jsonpath='{.spec.node_name}:{.spec.freshness}:{.spec.compliance}:{.spec.portability} -n he-codeco-mdm
+kubectl get netma-mons <node-name>-object -o=jsonpath='{.spec.node_name}:{.spec.link_id}:{.spec.link_failure}:{.spec.node_net_failure}:{.spec.ebw}:{.spec.ibw}:{.spec.latency}:{.spec.uid_visits}:{.spec.uid_location}:{.spec.zone}:{.spec.node_degree}:{.spec.path_length}:{.spec.link_energy}:{.spec.node_net_energy} -n he-codeco-netma
 ```
 
 # Execute the Extractor
 To Execute the extractor and gather results you can run the following:
 ```
-pip install -r requirements-v3.10.6.txt
-python3 extractor.py mode=<mode>
+cd data-extractor
+pip install -r requirements.txt
+python extractor.py mode=<mode>
 
-# To uninstall the requirements-v3.10.6.txt
-pip uninstall -r requirements-v3.10.6.txt
+# To uninstall the requirements.txt
+pip uninstall -r requirements.txt -y
 ```
 
 ## Comments for the Execution
