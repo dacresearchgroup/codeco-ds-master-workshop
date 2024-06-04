@@ -29,6 +29,9 @@ The above command will use the `config.txt` file to create a 3 node cluster usin
 You can view your nodes with the following command:
 ```
 kubectl get nodes
+
+# You can view all the pods in the following way:
+kubectl get pods --all-namespaces
 ```
 
 Your output should be something like the following:
@@ -70,13 +73,13 @@ While having a cluster and Prometheus within the cluster, run the following in t
 apply-controllers
 ```
 
-## How to Uninstall the Controllers
+### How to Uninstall the Controllers
 Run the following commands to use the deletion script:
 ```
 delete-controllers
 ```
 
-## Get Information without the Extractor Script
+### Get Information without the Extractor Script
 If you want to test in a fast way the controllers, try running the following for the ACM Controller. Just fill in one of your node names in the `<node-name>` field.
 ```
 kubectl get acm-mons <node-name>-object -o=jsonpath='{.spec.node_name}:{.spec.cpu}:{.spec.mem}:{.spec.node_failure}:{.spec.node_energy}:{.spec.node_sec} -n he-codeco-acm'
