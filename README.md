@@ -8,6 +8,14 @@ To use this code you should have the following:
 
 The following guide is describing the installation on Windows. To do the same for linux, it is advised to follow [this](https://gitlab.eclipse.org/eclipse-research-labs/codeco-project/experimentation-framework-and-demonstrations/data-generators-and-datasets/synthetic-data-generator) documentation. To learn more for the code, you should read the documentation in the previous hyperlink.
 
+## Download Repo
+To download this repo use the following command:
+```
+git clone https://github.com/dacresearchgroup/codeco-ds-master-workshop.git
+
+cd codeco-ds-master-workshop
+```
+
 ## Kind Installation
 To test the code you can use kind. To make the installation you can follow the commands describe in the [Docker documentation](https://docs.docker.com/engine/install/) & [kind documentation](https://kind.sigs.k8s.io/docs/user/quick-start).
 
