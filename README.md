@@ -12,10 +12,10 @@ https://github.com/prometheus-operator/kube-prometheus
 ```
 Yse the following commands on a Kubernetes Master to install:
 ```
-# Clone Repo
-git clone https://github.com/prometheus-operator/kube-prometheus
+# Get in the Prometheus Repo
+cd kube-prometheus
 
-# Apply
+# Apply the following lines
 kubectl apply --server-side -f manifests/setup
 kubectl wait --for condition=Established --all CustomResourceDefinition --namespace=monitoring
 kubectl apply -f manifests/
@@ -25,6 +25,20 @@ kubectl apply -f manifests/
 To Remove Prometheus that is installed with the above commands, do the following:
 ```
 kubectl delete --ignore-not-found=true -f manifests/ -f manifests/setup
+```
+
+## Kind Installation
+To use kind to setup a cluster use the following command from this directory:
+```
+kind create cluster --config config.txt --name sonem
+```
+
+The above command will use the `config.txt` file to create a 3 node cluster using `Docker` and `Kind`. The cluster will be named as `sonem`.
+
+### Delete cluster
+To delete your cluster you can use the following command:
+```
+kind delete cluster --name sonem
 ```
 
 # Description
@@ -121,6 +135,9 @@ To Execute the extractor and gather results you can run the following:
 ```
 pip install -r requirements-v3.10.6.txt
 python3 extractor.py mode=<mode>
+
+# To uninstall the requirements-v3.10.6.txt
+pip uninstall -r requirements-v3.10.6.txt
 ```
 
 ## Comments for the Execution
