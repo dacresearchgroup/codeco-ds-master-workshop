@@ -1,0 +1,17 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+# The commands below must be executed from the synthetic-data-generator directory
+docker build \
+-f mdm-controller/Dockerfile \
+--tag hecodeco/mdm-controller:v1.9.1.2-win .
+
+docker build -f mdm-controller\Dockerfile --tag hecodeco/mdm-controller:v1.9.1.2-win .
+
+docker push hecodeco/mdm-controller:v1.9.1.2-win
+
+# The commands below must be executed from the synthetic-data-generator directory
+docker buildx build \
+--push \
+-f mdm-controller/Dockerfile \
+--platform linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8 \
+--tag hecodeco/mdm-controller:v2.0.0 .  # Next one will be v2.1.0

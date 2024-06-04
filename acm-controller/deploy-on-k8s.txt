@@ -1,0 +1,15 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+# To Apply
+kubectl create namespace he-codeco-acm
+kubectl apply -f acm-crd.yaml
+kubectl apply -f acm-role.yaml
+kubectl apply -f acm-role-binding.yaml
+kubectl apply -f acm-controller-deployment.yaml
+
+# To Delete
+kubectl delete -f acm-controller-deployment.yaml
+kubectl delete -f acm-role-binding.yaml
+kubectl delete -f acm-role.yaml
+kubectl delete -f acm-crd.yaml
+kubectl delete namespace he-codeco-acm

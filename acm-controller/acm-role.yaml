@@ -1,0 +1,11 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole # Role
+metadata:
+  namespace: he-codeco-acm  # The desired namespace for the CRD
+  name: acm-resource-patcher
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]

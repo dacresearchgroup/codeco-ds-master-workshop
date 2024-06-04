@@ -1,0 +1,50 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netma-controller
+  namespace: he-codeco-netma  # The desired namespace for the CRD
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netma-controller
+  template:
+    metadata:
+      labels:
+        app: netma-controller
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: netma-controller
+        image: docker.io/hecodeco/netma-controller:v1.9.1.2-win
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: config-volume
+            mountPath: /app/config.json
+            subPath: topology.json
+      volumes:
+        - name: config-volume
+          configMap:
+            name: netma-config-map
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: netma-config-map
+  namespace: he-codeco-netma  # The desired namespace for the Config Map
+data:
+  topology.json: |
+    {
+      "node_names": [
+        "sonem-control-plane",
+        "sonem-worker",
+        "sonem-worker2"
+      ],
+      "connections": [
+        [1, 1, 1],
+        [1, 1, 0],
+        [1, 0, 1]
+      ]
+    }

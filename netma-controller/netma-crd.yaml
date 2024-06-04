@@ -1,0 +1,69 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: netma-mons.codeco.com
+  namespace: he-codeco-netma  # The desired namespace for the CRD
+spec:
+  group: codeco.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                node_name:
+                  description: Identifier of the node
+                  type: string
+                link_id:
+                  description: Identifier of a link
+                  type: string
+                link_failure:
+                  description: number of failures of a link
+                  type: integer
+                node_net_failure:
+                  description: sum of failures of all links of a node
+                  type: integer
+                ebw:
+                  description: Available egress bandwidth
+                  type: string
+                ibw:
+                  description: Available ingress bandwidth
+                  type: string
+                latency:
+                  description: average latency
+                  type: string
+                uid_visits:
+                  description: Nr of uid visits to the node over a time window
+                  type: string
+                uid_location:
+                  description: geo coordinates of the UE uid
+                  type: string
+                zone:
+                  description: Autonomous System (AS) of the node
+                  type: string
+                node_degree:
+                  description: number of active neighbornodes
+                  type: string
+                path_length:
+                  description: Number of hops traversed
+                  type: string
+                link_energy:
+                  description: The average expenditure of energy on a link
+                  type: string
+                node_net_energy:
+                  description: total energy spent across link transmissions
+                  type: string
+  scope: Namespaced
+  names:
+    plural: netma-mons
+    singular: netma-mon
+    kind: NETMA
+    shortNames:
+      - nma-m

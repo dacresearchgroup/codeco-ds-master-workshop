@@ -1,0 +1,22 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acm-controller
+  namespace: he-codeco-acm  # The desired namespace for the CRD
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: acm-controller
+  template:
+    metadata:
+      labels:
+        app: acm-controller
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: acm-controller
+        image: docker.io/hecodeco/acm-controller:v1.9.1.2-win
+        imagePullPolicy: Always

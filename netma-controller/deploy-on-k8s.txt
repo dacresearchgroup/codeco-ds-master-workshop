@@ -1,0 +1,13 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+# To Apply
+kubectl apply -f netma-crd.yaml
+kubectl apply -f netma-role.yaml
+kubectl apply -f netma-role-binding.yaml
+kubectl apply -f netma-controller-deployment.yaml
+
+# To Delete
+kubectl delete -f netma-controller-deployment.yaml
+kubectl delete -f netma-role-binding.yaml
+kubectl delete -f netma-role.yaml
+kubectl delete -f netma-crd.yaml

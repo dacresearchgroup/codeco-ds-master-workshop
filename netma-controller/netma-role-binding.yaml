@@ -1,0 +1,15 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding # RoleBinding
+metadata:
+  namespace: he-codeco-netma  # The desired namespace for the CRD
+  name: netma-resource-patcher-binding
+subjects:
+- kind: ServiceAccount
+  name: default  # Adjust to the correct service account name if different
+  namespace: he-codeco-netma  # The desired namespace for the CRD
+roleRef:
+  kind: ClusterRole # Role
+  name: netma-resource-patcher
+  apiGroup: rbac.authorization.k8s.io

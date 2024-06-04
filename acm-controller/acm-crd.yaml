@@ -1,0 +1,45 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: acm-mons.codeco.com
+  namespace: he-codeco-acm  # The desired namespace for the CRD
+spec:
+  group: codeco.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                node_name:
+                  description: Identifier of the node
+                  type: string
+                cpu:
+                  description: CPU
+                  type: string
+                mem:
+                  description: memory
+                  type: string
+                node_failure:
+                  description: failures over a time window (EMA)
+                  type: integer
+                node_energy:
+                  description: Energy consumed by a node
+                  type: string
+                node_sec:
+                  description: level of security guaranteed by the node
+                  type: string
+  scope: Namespaced
+  names:
+    plural: acm-mons
+    singular: acm-mon
+    kind: ACM
+    shortNames:
+      - acm-m

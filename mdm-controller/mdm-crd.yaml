@@ -1,0 +1,39 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: mdm-mons.codeco.com
+  namespace: he-codeco-mdm  # The desired namespace for the CRD
+spec:
+  group: codeco.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                node_name:
+                  description: identifier of the node
+                  type: string
+                freshness:
+                  description: healthiness of the node based on data freshness
+                  type: string
+                compliance:
+                  description: compliance to application requirements
+                  type: string
+                portability:
+                  description: portability level for a specific application
+                  type: string
+  scope: Namespaced
+  names:
+    plural: mdm-mons
+    singular: mdm-mon
+    kind: MDM
+    shortNames:
+      - mdm-m

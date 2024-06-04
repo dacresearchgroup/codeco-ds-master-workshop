@@ -1,0 +1,22 @@
+# Author: Panagiotis Karamolegkos (UPRC)
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mdm-controller
+  namespace: he-codeco-mdm  # The desired namespace for the CRD
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mdm-controller
+  template:
+    metadata:
+      labels:
+        app: mdm-controller
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: mdm-controller
+        image: docker.io/hecodeco/mdm-controller:v1.9.1.2-win
+        imagePullPolicy: Always
